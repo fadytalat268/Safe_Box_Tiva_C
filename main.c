@@ -10,9 +10,9 @@ Functions:
 */
 //==========================================
 //Functions Prototypes:
-void Reset_Password (uint8_t * Current_Password, uint8_t * New_Password);
-uint8_t Check (uint8_t * Entered_Password);
-void Wrong_Password (void);
+void Reset_PW (uint8_t * Current_Password, uint8_t * New_Password);
+uint8_t Check_PW (uint8_t * Entered_Password);
+void Wrong_PW (void);
 void Reset_Button (void);
 void Timer (void); 
 void LCD_Send_Msg(uint8_t * Msg); 
@@ -52,16 +52,24 @@ int main (){
 	 }
 }
 
-// Function to receive the return of Reset Message
-void Push_Button(char ret){
-if (ret == 'A'){
-Reset_Password();	
-}
-if(ret == 'B'){
-// Write code here to go back to the previous state
-}
-// Function to reset password
+void Reset_PW (uint8_t * Current_PW, uint8_t * Entered_PW){
 
-void Reset_Password(void){
-// Write code here to reset the password
+}
+uint8_t Check_PW (uint8_t * Entered_PW){
+
+}
+void Wrong_PW (void){
+
+}
+void Reset_Button (void){
+
+}
+void Timer (void){
+
+}
+void LCD_Send_Msg(uint8_t * Msg){
+
+}
+void Lock_Control(uint8_t){
+
 }
