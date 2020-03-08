@@ -28,3 +28,17 @@ int main (){
 	 }
 	 }
 }
+
+// Function to receive the return of Reset Message
+void Push_Button(char ret){
+if (ret == 'A'){
+Reset_Password();	
+}
+if(ret == 'B'){
+// Write code here to go back to the previous state
+}
+// Function to reset password
+
+void Reset_Password(void){
+// Write code here to reset the password
+}
