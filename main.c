@@ -1,11 +1,12 @@
 /*
-1. Reset_Password
-2. Check_Password 
-3. Wrong_Password 
+Functions:
+1. Reset_PW
+2. Check_PW 
+3. Wrong_PW 
 4. Reset_Button 
 5. Timer 
-6. LCD_Control 
-7. Lock_Control
+6. LCD_Send_Msg
+7. Lock_Ctrl
 */
 //==========================================
 //Functions Prototypes:
@@ -14,8 +15,8 @@ uint8_t Check (uint8_t * Entered_Password);
 void Wrong_Password (void);
 void Reset_Button (void);
 void Timer (void); 
-LCD_Send_Msg 
-Lock_Control
+void LCD_Send_Msg(uint8_t * Msg); 
+void Lock_Control(uint8_t);
 
 #define Lock_Pin PIN2
 #define Lock_Port PORT_D
