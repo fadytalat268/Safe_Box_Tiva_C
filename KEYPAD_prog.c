@@ -9,6 +9,10 @@
 
 #include <myInc/delay.h>
 
+const volatile uint8_t keypad[16]={'1','2','3','A',
+                          '4','5','6','B',
+                          '7','8','9','C',
+                          '*','0','#','D'};
 
 void KEYPAD_Init(void)
 {
@@ -69,6 +73,17 @@ uint8_t GET_KEYPAD_VALUE(void)
 }
 
 
+uint8_t KEYPAD_PressedKey(void)
+{
+    uint16_t num = GET_KEYPAD_VALUE();
+    if(num != 0xff)
+    {
+        num=num-1;
+        return keypad[num];
+    }
+
+    return 0xff;
+}
 
 
 
