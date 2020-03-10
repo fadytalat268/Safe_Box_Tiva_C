@@ -274,3 +274,15 @@ void Wrong_PW (void){
  * leeeeeh bete3ml reset lama yeda5al l pw 5 marat 3'alaat ??????? just yeb3at sms 3ala l mobile 
  * 
  */
+
+/*
+ *return back to previous state ezay without saving it to dipslay a msg aw ay 7aga !
+ *counter to break out of reset_button funct lw fdl msh byd5l 7aga s7 !
+ *no need to keep if in received pass
+ *f lock : if C , else if D else y2olo ydos 3la 7aga
+ * check brdo lw das C hya mfto7a aw D w hya m2fola
+ *else if pass s7 w mdassh A
+ *counter incrementation in case of wrong password fein!!
+ *
+ */
+ 
