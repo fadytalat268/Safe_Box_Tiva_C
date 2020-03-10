@@ -21,10 +21,12 @@ Functions (not complete):
 #include "C:/Users/BoshBosh/Desktop/Tiva/myInc/GPIO_int.h"
 #include "C:/Users/BoshBosh/Desktop/Tiva/myInc/LCD_int.h"
 #include "C:/Users/BoshBosh/Desktop/Tiva/myInc/KEYPAD_int.h"
+#include "driverlib/eeprom.h"
 void SystemInit () {}
 //Functions Prototypes:______________________________________________________________________________________________
 void Timer_Init (void);
 void Timer (void); 
+void eeprom_Init(void);
 void Reset_PW (void);
 void Lock_Control(uint8_t Order);
 void Receive_PW (uint8_t * PW);
@@ -43,6 +45,7 @@ uint8_t Keypad_PressedKey(void);
 uint8_t Lock_Status(void);
 //Macros:____________________________________________________________________________________________________________
 #define Lock_Pin PIN2
+#define PW_loc 0x00
 #define Lock_Port PORT_D
 #define Reset_Pin PIN4
 #define Reset_Port PORT_F
@@ -52,14 +55,16 @@ uint8_t Lock_Status(void);
 #define OPEN 1
 #define CLOSE 0	
 //Global Variables:__________________________________________________________________________________________________
-volatile uint8_t Current_PW [4] = "0000", counter=0;
+volatile uint8_t Current_PW [4] , counter=0;
 //Pins Configuration:________________________________________________________________________________________________
 
 //___________________________________________________________________________________________________________________
 
 int main (){
 	PORTS_Init();
+	eeprom_Init();
 	Open_Lock();
+	
 	while(1){
 	if(Lock_Status()==CLOSE) LCD_Send_Msg("Press C to Open");
 	else if(Lock_Status()==OPEN) LCD_Send_Msg("Press D to Close");
@@ -69,6 +74,16 @@ int main (){
 	}
 }
 //Functions Definitions:_____________________________________________________________________________________________
+void eeprom_Init(void){
+	
+	SysCtlClockSet(SYSCTL_SYSDIV_5|SYSCT_USE_PLL|SYSTCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
+	SysCtlDelay(20000000);
+	SystCtlPeriperalEnable(SYSTCTL_PERIPH_EEPROM0);
+	EEPROMInit();
+	EEPROMRead(Current_PW,PW_loc,sizeof(Current_PW));
+	
+}
+//_________________________________________________________________________________________________________________
 void PORTS_Init(void){
 GPIO_SetPinDirection(Lock_Port, Lock_Pin, OUTPUT);
 GPIO_SetPinDirection(Reset_Port, Reset_Pin, INPUT);
@@ -149,7 +164,10 @@ void Reset_PW (void){
 			}
 			}while(!Check_If_0000(New_PW));
       if(Keypad_PressedKey()=='A'){
-			for (i=0 ;i<4 ; i++) Current_PW[i]=New_PW[i];
+			for (i=0 ;i<4 ; i++) {
+				Current_PW[i]=New_PW[i];
+				EEPROMProgram(Current_PW,PW_loc,sizeof(Current_PW));
+			}
 			LCD_Send_Msg("Password Changed");
 			}
     }
@@ -217,6 +235,7 @@ void Receive_PW (uint8_t * PW){
 uint8_t Check_PW (uint8_t * Entered_PW){
     uint8_t i;
     for (i=0; i<4; i++){
+	    
             if (Entered_PW[i]!=Current_PW[i]){
                 return 0;
 						}
