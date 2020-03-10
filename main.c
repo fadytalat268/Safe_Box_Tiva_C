@@ -279,6 +279,7 @@ void Wrong_PW (void){
  *return back to previous state ezay without saving it to dipslay a msg aw ay 7aga !
  *counter to break out of reset_button funct lw fdl msh byd5l 7aga s7 !
  *no need to keep if in received pass
+ *clear display after delays !!
  *f lock : if C , else if D else y2olo ydos 3la 7aga
  * check brdo lw das C hya mfto7a aw D w hya m2fola
  *else if pass s7 w mdassh A
