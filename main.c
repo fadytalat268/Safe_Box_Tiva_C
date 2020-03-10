@@ -10,6 +10,9 @@ Functions (not complete):
 8. LCD_Send_Msg (Waiting Done)
 9. Wrong_PW (//)
 */
+
+//Buttons : A yes B no C open D close
+
 //Includes:__________________________________________________________________________________________________________
 #include "stdint.h"
 #include "C:/Users/BoshBosh/Desktop/Tiva/myInc/tm4c123gh6pm.h"
