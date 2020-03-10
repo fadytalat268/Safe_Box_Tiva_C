@@ -235,7 +235,7 @@ void Receive_PW (uint8_t * PW){
 uint8_t Check_PW (uint8_t * Entered_PW){
     uint8_t i;
     for (i=0; i<4; i++){
-	    
+	    EEPROMRead(Current_PW,PW_loc,sizeof(Current_PW));
             if (Entered_PW[i]!=Current_PW[i]){
                 return 0;
 						}
