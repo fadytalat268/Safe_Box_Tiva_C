@@ -260,3 +260,14 @@ void Wrong_PW (void){
   _delay_ms(300);		
 	}
 }
+
+
+/*
+ * kol makan testa5dem feh keypad_pressedkey() 7otaha l awel f variable ba3dan esta5demo fl if condition
+ * l functions ely betestana feha input mn l user 3ala l keypad lazem lazem yekon feha while(1) le7ad ma l user yeda5al fa te3mel break
+ * if ((K_Old_Value!=Keypad_PressedKey()) && (Keypad_PressedKey()!=0xFF))?? ehh lazmet dawel check dah ??
+ * new passwords and old ones should be saved in eeprom using EEPROMProgram () to write and EEPROMRead to read after initializing eeprom 
+ * lleeh l freq= 1000000 gebt l rakm dah menan 3ala asas eh ya3ny ??
+ * leeeeeh bete3ml reset lama yeda5al l pw 5 marat 3'alaat ??????? just yeb3at sms 3ala l mobile 
+ * 
+ */
