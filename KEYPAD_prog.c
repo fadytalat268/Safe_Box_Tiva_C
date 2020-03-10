@@ -9,6 +9,9 @@
 
 #include <myInc/delay.h>
 
+void Open_Buzzer(void);
+void Close_Buzzer(void);
+
 const volatile uint8_t keypad[16]={'1','2','3','A',
                           '4','5','6','B',
                           '7','8','9','C',
@@ -57,8 +60,9 @@ uint8_t GET_KEYPAD_VALUE(void)
         {
             if(!GPIO_GetPinValue(KeyPad_IN_PORT, j-4))
             {
-                while(!GPIO_GetPinValue(KeyPad_IN_PORT, j-4)); //don't return until user removes his hand off the button
-
+                while(!GPIO_GetPinValue(KeyPad_IN_PORT, j-4))	Open_Buzzer(); //don't return until user removes his hand off the button
+				
+				Close_Buzzer();
                 _delay_ms(5); //to avoid debouncing
 
                 uint8_t numb = ((j-4)*4)+i+1;
